@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ClickController : MonoBehaviour
 {
+    [SerializeField] private TargetManager targetManager;
+
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -17,6 +20,6 @@ public class ClickController : MonoBehaviour
 
     private void OnObjectClicked(GameObject colliderGameObject)
     {
-        Debug.Log(colliderGameObject.name + " was clicked.");
+        targetManager.Hit(colliderGameObject);
     }
 }
