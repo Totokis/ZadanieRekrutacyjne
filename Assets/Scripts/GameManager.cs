@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TargetManager targetManager;
 
-    public UnityEvent onGameOver;
-    public UnityEvent pointsChanged;
+    public UnityEvent<float> onGameOver;
+    public UnityEvent<float> pointsChanged;
+    public UnityEvent newWave;
     private int _currentWaveIndex;
     private float _sumOfPoints;
 
@@ -17,16 +18,17 @@ public class GameManager : MonoBehaviour
     {
         Restart();
     }
-    private void Restart()
+    public void Restart()
     {
         _currentWaveIndex = 0;
-        pointsChanged.Invoke();
+        _sumOfPoints = 0f;
+        pointsChanged.Invoke(_sumOfPoints);
         targetManager.Restart(waves[_currentWaveIndex]);
     }
     public void AddPoints(float points)
     {
         _sumOfPoints += points;
-        pointsChanged.Invoke();
+        pointsChanged.Invoke(_sumOfPoints);
         CheckForEnd();
     }
     private void CheckForEnd()
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
             if (_currentWaveIndex < waves.Count - 1)
             {
                 _currentWaveIndex++;
+                newWave.Invoke();
                 targetManager.Restart(waves[_currentWaveIndex]);
                 Debug.Log("NextWave");
             }
@@ -45,6 +48,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver");
-        onGameOver.Invoke();
+        onGameOver.Invoke(_sumOfPoints);
+    }
+    public float GetMaxPoints()
+    {
+        return waves[_currentWaveIndex].pointLimit;
     }
 }

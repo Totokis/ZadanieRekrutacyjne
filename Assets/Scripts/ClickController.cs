@@ -3,13 +3,14 @@ using UnityEngine;
 public class ClickController : MonoBehaviour
 {
     [SerializeField] private TargetManager targetManager;
+    [SerializeField] private Camera mainCamera;
 
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out var hit))
             {
@@ -21,6 +22,5 @@ public class ClickController : MonoBehaviour
     private void OnObjectClicked(GameObject colliderGameObject)
     {
         targetManager.Hit(colliderGameObject);
-        Debug.Log("Clicked");
     }
 }
