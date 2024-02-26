@@ -14,7 +14,7 @@ public class TargetController : MonoBehaviour
 
     public void Hit()
     {
-        FindObjectOfType<GameManager>().AddPoints(points);
+        GameManager.Instance.AddPoints(points);
         Blow();
     }
 

@@ -48,7 +48,7 @@ public class TargetManager : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<GameManager>().GameOver();
+            GameManager.Instance.GameOver();
             foreach (var target in _targetLocationMap.Keys)
             {
                 target.Blow();
