@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Extensions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TargetManager : MonoBehaviour
@@ -47,15 +49,33 @@ public class TargetManager : MonoBehaviour
         else
         {
             FindObjectOfType<GameManager>().GameOver();
+            foreach (var target in _targetLocationMap.Keys)
+            {
+                target.Blow();
+            }
+
             _start = false;
         }
     }
 
     public void Restart(Wave wave)
     {
-        _start = true;
+        StartCoroutine(RestartCoroutine(wave));
+
+    }
+
+    public IEnumerator RestartCoroutine(Wave wave)
+    {
+        _start = false;
         _nextTimeToAct = Time.time + wave.frequencyOfSpawning;
         _wave = wave;
+
+        for (var i = 0; i < _targetLocationMap.Keys.Count; i++)
+        {
+            Destroy(_targetLocationMap.Keys.ToList()[i].gameObject);
+        }
+
+        yield return new WaitForEndOfFrameUnit();
 
         _targetLocationMap.Clear();
         _locationTargetMap.Clear();
@@ -81,5 +101,7 @@ public class TargetManager : MonoBehaviour
         {
             Debug.Log("Locations are empty. Fill to generate targets");
         }
+
+        _start = true;
     }
 }

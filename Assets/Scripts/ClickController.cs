@@ -21,5 +21,6 @@ public class ClickController : MonoBehaviour
     private void OnObjectClicked(GameObject colliderGameObject)
     {
         targetManager.Hit(colliderGameObject);
+        Debug.Log("Clicked");
     }
 }

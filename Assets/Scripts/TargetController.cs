@@ -7,28 +7,34 @@ public class TargetController : MonoBehaviour
 
     [SerializeField] private MeshRenderer meshRenderer;
 
-    private void OnEnable()
-    {
-        meshRenderer.material.color = Random.ColorHSV(0.5f, 1f);
-    }
+    [SerializeField] private ParticleController particleController;
 
-    private void OnDisable()
-    {
-        Debug.Log("Particles");
-    }
+    private Color _color;
 
 
     public void Hit()
     {
         FindObjectOfType<GameManager>().AddPoints(points);
-        gameObject.SetActive(false);
+        Blow();
+    }
+
+    public void Blow()
+    {
+        Debug.Log("Particles");
+        particleController.Blow();
+        meshRenderer.enabled = false;
     }
     public void Restart()
     {
-        gameObject.SetActive(false);
+        meshRenderer.enabled = false;
     }
     public void WakeUp()
     {
-        gameObject.SetActive(true);
+        _color = Random.ColorHSV(0.5f, 1f);
+
+        meshRenderer.enabled = true;
+        meshRenderer.material.color = _color;
+
+        particleController.Restart(_color);
     }
 }

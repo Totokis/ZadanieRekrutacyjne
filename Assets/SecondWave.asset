@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 861945b7a5b5410c8409b67fbf6c8b1c, type: 3}
-  m_Name: FirstWave
+  m_Name: SecondWave
   m_EditorClassIdentifier: 
   targetsToSpawn:
   - {fileID: 7511693933342572568, guid: edb9beafae5ed433aba5a11bdf9dd1fc, type: 3}
-  pointLimit: 5
+  pointLimit: 15
   frequencyOfSpawning: 1
