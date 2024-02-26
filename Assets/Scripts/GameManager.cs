@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         Restart();
     }
+
     public void Restart()
     {
         _currentWaveIndex = 0;

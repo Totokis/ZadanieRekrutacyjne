@@ -14,8 +14,12 @@ public class TargetController : MonoBehaviour
 
     public void Hit()
     {
-        GameManager.Instance.AddPoints(points);
-        Blow();
+        if (meshRenderer.enabled)
+        {
+            GameManager.Instance.AddPoints(points);
+            Blow();
+        }
+
     }
 
     public void Blow()

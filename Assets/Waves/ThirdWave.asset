@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 861945b7a5b5410c8409b67fbf6c8b1c, type: 3}
-  m_Name: FirstWave
+  m_Name: ThirdWave
   m_EditorClassIdentifier: 
   targetsToSpawn:
   - {fileID: 7511693933342572568, guid: edb9beafae5ed433aba5a11bdf9dd1fc, type: 3}
-  pointLimit: 5
-  frequencyOfSpawning: 1
+  - {fileID: 6775792122285032000, guid: 53d1ab585efae4647aaf3addf8677141, type: 3}
+  pointLimit: 50
+  frequencyOfSpawning: 0.6
