@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd924b8070e524cad9a4dc2cdf7c55e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 2
+  meshRenderer: {fileID: 8984060273726718773}
 --- !u!33 &2060752308448434884
 MeshFilter:
   m_ObjectHideFlags: 0

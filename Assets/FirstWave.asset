@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetsToSpawn:
   - {fileID: 7511693933342572568, guid: edb9beafae5ed433aba5a11bdf9dd1fc, type: 3}
-  pointLimit: 0
-  frequencyOfSpawning: 0
+  pointLimit: 10
+  frequencyOfSpawning: 1
