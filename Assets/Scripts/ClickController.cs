@@ -2,32 +2,21 @@ using UnityEngine;
 
 public class ClickController : MonoBehaviour
 {
-
     private void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
-
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out var hit))
             {
-
-                if (hit.collider.gameObject == gameObject)
-                {
-
-                    OnObjectClicked();
-                }
+                OnObjectClicked(hit.collider.gameObject);
             }
         }
     }
 
-    private void OnObjectClicked()
+    private void OnObjectClicked(GameObject colliderGameObject)
     {
-
-        Debug.Log(gameObject.name + " was clicked.");
+        Debug.Log(colliderGameObject.name + " was clicked.");
     }
 }
