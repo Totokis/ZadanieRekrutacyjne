@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         {
             if (_currentWaveIndex < waves.Count - 1)
             {
+                _sumOfPoints = 0f;
                 _currentWaveIndex++;
                 newWave.Invoke();
                 targetManager.Restart(waves[_currentWaveIndex]);
